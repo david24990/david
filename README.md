@@ -95,6 +95,7 @@
             width: 800px;
             max-width: 90vw;
             height: 450px;
+            background: #000;
         }
     </style>
 </head>
@@ -106,7 +107,7 @@
         <button class="btn" id="yesBtn">Yes</button>
         <button class="btn" id="noBtn" style="left:0;top:0;">No</button>
         <div id="message">You said YES! 💖</div>
-        <video id="confessionVideo" controls>
+        <video id="confessionVideo" autoplay>
             <source src="ssstik.io_@scytheivx_1755092058187.mp4" type="video/mp4">
         </video>
     </div>
@@ -140,6 +141,16 @@
             video.style.display = 'block';
             video.play();
             sideImgs.forEach(img => img.classList.add('show'));
+        });
+
+        // Prevent pausing
+        video.addEventListener('pause', function() {
+            video.play();
+        });
+        // Optional: Loop video
+        video.addEventListener('ended', function() {
+            video.currentTime = 0;
+            video.play();
         });
     </script>
 </body>
